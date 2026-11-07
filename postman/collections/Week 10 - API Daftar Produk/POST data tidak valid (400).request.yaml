@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/products"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "   ",
+      "price": -1
+    }
+order: 5000

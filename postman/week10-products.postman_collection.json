@@ -1,0 +1,82 @@
+{
+  "info": {
+    "_postman_id": "60bbf1f4-95fd-497e-9c60-4d034318e00b",
+    "name": "Week 10 - API Daftar Produk",
+    "description": "Request CRUD dan validasi. Setelah POST, salin ID respons ke variabel productId sebelum menjalankan PUT dan DELETE yang berhasil.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET seluruh produk",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/products" }
+    },
+    {
+      "name": "GET produk berdasarkan ID",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/products/{{productId}}" }
+    },
+    {
+      "name": "GET produk yang tidak ditemukan (404)",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/products/999999" }
+    },
+    {
+      "name": "POST produk baru (201)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Penghapus\",\n  \"price\": 3000\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/products"
+      }
+    },
+    {
+      "name": "POST data tidak valid (400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"   \",\n  \"price\": -1\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/products"
+      }
+    },
+    {
+      "name": "PUT perbarui produk (200)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": {{productId}},\n  \"name\": \"Penghapus diperbarui\",\n  \"price\": 3500\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/products/{{productId}}"
+      }
+    },
+    {
+      "name": "PUT ID body tidak cocok dengan URL (400)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"name\": \"ID tidak cocok\",\n  \"price\": 3000\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/products/{{productId}}"
+      }
+    },
+    {
+      "name": "DELETE hapus produk (200)",
+      "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/products/{{productId}}" }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "productId", "value": "999999" }
+  ]
+}

@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/products/{{productId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": {{productId}},
+      "name": "Penghapus diperbarui",
+      "price": 3500
+    }
+order: 6000

@@ -1,0 +1,5 @@
+$kind: collection
+description: Request CRUD dan validasi. Setelah POST, salin ID respons ke variabel productId sebelum menjalankan PUT dan DELETE yang berhasil.
+variables:
+  baseUrl: http://localhost:3000
+  productId: "999999"
